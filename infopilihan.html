@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InfoPilihan menyajikan artikel, tips, dan rekomendasi produk pilihan untuk membantu belanja lebih cerdas.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="InfoPilihan — Artikel & Rekomendasi Produk">
+  <meta property="og:description" content="Temukan tips, informasi, dan rekomendasi produk pilihan.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80">
+  <title>InfoPilihan — Artikel & Rekomendasi Produk</title>
+  <style>
+    :root{--ink:#17212b;--muted:#667085;--brand:#ee4d2d;--brand-dark:#cf3e22;--line:#e8edf2;--paper:#f6f8fb;--white:#fff}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+    .top{background:#17212b;color:#dce4eb;font-size:13px;padding:8px 0}.top .wrap{display:flex;justify-content:space-between;gap:12px}
+    header{background:#fff;border-bottom:1px solid var(--line)}.head{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:20px}
+    .logo{font-size:25px;font-weight:800;letter-spacing:-1px}.logo span{color:var(--brand)}nav{display:flex;gap:22px;font-size:14px;font-weight:700;color:#475467}
+    nav a:hover{color:var(--brand)}.hero{padding:34px 0 24px}.hero-box{background:linear-gradient(115deg,#17212b,#35495c);color:#fff;border-radius:18px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;overflow:hidden}
+    .eyebrow{color:#ffc7b9;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}.hero h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:10px 0}.hero p{color:#d6e0e8;max-width:560px;margin:0 0 18px}
+    .hero-art{min-height:180px;border-radius:14px;background:linear-gradient(135deg,#ffb49f,#ffe0b5);display:grid;place-items:center;font-size:74px}
+    .button{display:inline-block;background:var(--brand);color:white;padding:11px 17px;border-radius:9px;font-weight:800;font-size:14px}.button:hover{background:var(--brand-dark)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin:26px 0 14px}.section-head h2{font-size:23px;margin:0}.section-head small{color:var(--muted)}
+    .chips{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 22px}.chip{border:1px solid var(--line);background:white;padding:7px 13px;border-radius:30px;font-size:13px;color:#475467}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px #17212b12}
+    .thumb{height:185px;display:grid;place-items:center;background:#e9eef3;font-size:58px}.thumb img{width:100%;height:100%;object-fit:cover}.card-body{padding:16px}.tag{font-size:11px;font-weight:800;text-transform:uppercase;color:var(--brand);letter-spacing:.8px}.card h3{font-size:18px;line-height:1.35;margin:7px 0}.card p{font-size:13px;color:var(--muted);margin:0 0 12px}.read{font-size:13px;font-weight:800;color:var(--brand)}
+    .notice{margin:26px 0;background:#fff7f4;border:1px solid #ffddd4;border-radius:12px;padding:15px 17px;font-size:13px;color:#684238}
+    footer{margin-top:42px;background:#17212b;color:#dce4eb;padding:28px 0}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot small{color:#aebbc7}
+    .article{display:none;background:white;border:1px solid var(--line);border-radius:16px;padding:clamp(18px,4vw,34px);margin:25px 0}.article.active{display:block}.article h1{font-size:clamp(27px,4vw,38px);line-height:1.2;margin:8px 0 12px}.article .lead{font-size:18px;color:#52606d}.article p{color:#344054}.article .product-box{border:1px solid var(--line);border-radius:14px;padding:18px;margin:22px 0;background:#fbfcfd}.article .product-box h3{margin-top:0}.back{display:inline-block;margin-bottom:12px;color:var(--brand);font-weight:700;font-size:14px}
+    .share{margin-left:8px;background:#1877f2}.share:hover{background:#1262cc}
+    @media(max-width:760px){.hero-box{grid-template-columns:1fr;padding:25px}.hero-art{min-height:125px;font-size:55px}.grid{grid-template-columns:repeat(2,1fr)}nav{gap:12px;flex-wrap:wrap;justify-content:flex-end}.head{align-items:flex-start}.logo{font-size:22px}}
+    @media(max-width:520px){.wrap{width:min(100% - 24px,1120px)}.grid{grid-template-columns:1fr}.thumb{height:200px}.top .wrap{font-size:11px}.head{display:block}.head nav{justify-content:flex-start;margin-top:10px}.hero{padding-top:20px}}
+  </style>
+</head>
+<body>
+  <div class="top"><div class="wrap"><span>Informasi & rekomendasi untuk belanja lebih cerdas</span><span id="today"></span></div></div>
+  <header><div class="wrap head">
+    <a class="logo" href="#" onclick="showHome();return false">Info<span>Pilihan</span></a>
+    <nav><a href="#" onclick="showHome();return false">Beranda</a><a href="#artikel">Artikel</a><a href="#rekomendasi">Rekomendasi</a><a href="#tentang">Tentang</a></nav>
+  </div></header>
+
+  <main class="wrap">
+    <section id="home">
+      <section class="hero">
+        <div class="hero-box">
+          <div><div class="eyebrow">Temukan pilihan terbaik</div><h1>Ide menarik, tips praktis, dan rekomendasi pilihan.</h1>
+            <p>Baca informasi sederhana sebelum menentukan pilihan. Kami membantu merangkum hal-hal menarik agar kamu bisa berbelanja dengan lebih bijak.</p>
+            <a class="button" href="#artikel">Jelajahi Artikel</a></div>
+          <div class="hero-art" aria-label="Ilustrasi belanja">🛍️</div>
+        </div>
+      </section>
+      <section id="artikel">
+        <div class="section-head"><h2>Artikel terbaru</h2><small>Pilihan bacaan untukmu</small></div>
+        <div class="chips"><span class="chip">Semua</span><span class="chip">Tips Belanja</span><span class="chip">Rumah Tangga</span><span class="chip">Teknologi</span></div>
+        <div class="grid">
+          <article class="card"><div class="thumb">🧹</div><div class="card-body"><div class="tag">Rumah Tangga</div><h3>5 Peralatan sederhana yang bisa membantu pekerjaan rumah</h3><p>Kenali beberapa alat praktis yang bisa membuat kegiatan sehari-hari terasa lebih mudah.</p><a class="read" href="#" onclick="showArticle('rumah');return false">Baca artikel →</a></div></article>
+          <article class="card"><div class="thumb">📱</div><div class="card-body"><div class="tag">Teknologi</div><h3>Hal yang perlu diperhatikan sebelum membeli aksesori HP</h3><p>Mulai dari kecocokan, bahan, fitur, hingga ulasan pembeli.</p><a class="read" href="#" onclick="showArticle('hp');return false">Baca artikel →</a></div></article>
+          <article class="card"><div class="thumb">🛒</div><div class="card-body"><div class="tag">Tips Belanja</div><h3>Tips memilih produk online agar tidak salah beli</h3><p>Periksa detail produk dan bandingkan informasi sebelum checkout.</p><a class="read" href="#" onclick="showArticle('belanja');return false">Baca artikel →</a></div></article>
+        </div>
+      </section>
+      <section id="rekomendasi">
+        <div class="section-head"><h2>Rekomendasi pilihan</h2><small>Periksa detail sebelum membeli</small></div>
+        <div class="grid">
+          <article class="card"><div class="thumb">✨</div><div class="card-body"><div class="tag">Pilihan praktis</div><h3>Perlengkapan rumah pilihan</h3><p>Temukan produk yang mungkin berguna untuk kebutuhan rumah.</p><a class="read" href="#" onclick="showArticle('rumah');return false">Lihat rekomendasi →</a></div></article>
+          <article class="card"><div class="thumb">🎧</div><div class="card-body"><div class="tag">Aksesori gadget</div><h3>Aksesori HP untuk aktivitas harian</h3><p>Perhatikan kompatibilitas dan spesifikasi produk.</p><a class="read" href="#" onclick="showArticle('hp');return false">Lihat rekomendasi →</a></div></article>
+          <article class="card"><div class="thumb">💡</div><div class="card-body"><div class="tag">Panduan belanja</div><h3>Belanja online dengan lebih teliti</h3><p>Gunakan panduan sederhana sebelum menentukan pilihan.</p><a class="read" href="#" onclick="showArticle('belanja');return false">Baca panduan →</a></div></article>
+        </div>
+      </section>
+      <div class="notice"><strong>Transparansi:</strong> Beberapa tautan pada website ini dapat berupa tautan afiliasi. Jika kamu membeli melalui tautan tersebut, pemilik website mungkin menerima komisi tanpa biaya tambahan untukmu. Rekomendasi bukan jaminan kualitas; selalu periksa detail dan ulasan produk.</div>
+    </section>
+
+    <section id="articleView" class="article">
+      <a class="back" href="#" onclick="showHome();return false">← Kembali ke beranda</a>
+      <div class="tag" id="articleTag"></div><h1 id="articleTitle"></h1><p class="lead" id="articleLead"></p>
+      <div id="articleBody"></div>
+      <div class="product-box"><h3>🔎 Lihat produk terkait</h3><p id="productText">Periksa foto, spesifikasi, harga terbaru, dan ulasan pembeli di halaman toko.</p>
+        <a class="button" id="affiliateButton" href="https://shopee.co.id/" target="_blank" rel="nofollow sponsored noopener">Lihat di Shopee</a>
+        <p style="font-size:12px;color:#667085;margin-bottom:0">Tautan dapat berupa tautan afiliasi. Harga dan ketersediaan mengikuti informasi di Shopee.</p>
+      </div>
+      <button class="button share" onclick="shareArticle()">Bagikan ke Facebook</button>
+    </section>
+  </main>
+  <footer id="tentang"><div class="wrap foot"><div><a class="logo" href="#" style="color:white" onclick="showHome();return false">Info<span>Pilihan</span></a><p style="max-width:430px">Portal informasi, tips, dan rekomendasi produk. Pilih dengan cermat sesuai kebutuhanmu.</p></div><div><strong>Informasi</strong><br><small>Kontak: email-kamu@example.com<br>© <span id="year"></span> InfoPilihan</small></div></div></footer>
+
+<script>
+  // GANTI URL DI BAWAH DENGAN LINK AFFILIATE SHOPEE MILIKMU.
+  // Tambahkan artikel atau produk lain dengan mengikuti pola objek ini.
+  const articles = {
+    rumah: {
+      tag:"Rumah Tangga",
+      title:"5 Peralatan sederhana yang bisa membantu pekerjaan rumah",
+      lead:"Peralatan yang tepat dapat membantu pekerjaan sehari-hari menjadi lebih praktis. Berikut beberapa hal yang bisa kamu pertimbangkan.",
+      body:`<p>Sebelum membeli perlengkapan rumah, pikirkan pekerjaan apa yang paling sering kamu lakukan. Pilih alat yang benar-benar sesuai kebutuhan, mudah dibersihkan, dan memiliki petunjuk penggunaan yang jelas.</p>
+      <h3>Perhatikan bahan dan ukuran</h3><p>Pastikan ukuran produk sesuai ruang penyimpananmu. Baca keterangan bahan, cara perawatan, serta foto produk dari beberapa sisi.</p>
+      <h3>Baca ulasan pembeli</h3><p>Ulasan dengan foto atau video dapat memberi gambaran tambahan. Tetap bandingkan beberapa toko dan jangan hanya terpaku pada harga termurah.</p>`,
+      link:"https://s.shopee.co.id/AUvH75fyp6",
+      product:"Cari perlengkapan rumah yang sesuai kebutuhanmu."
+    },
+    hp: {
+      tag:"Teknologi",
+      title:"Hal yang perlu diperhatikan sebelum membeli aksesori HP",
+      lead:"Aksesori yang terlihat menarik belum tentu cocok untuk semua perangkat. Cek beberapa hal berikut sebelum membeli.",
+      body:`<p>Periksa merek dan model HP yang didukung. Untuk kabel atau pengisi daya, cek jenis konektor, daya, dan standar keamanan yang dicantumkan produsen.</p>
+      <h3>Jangan abaikan spesifikasi</h3><p>Baca ukuran, bahan, fitur, garansi, dan isi paket. Pastikan deskripsi sesuai dengan kebutuhan perangkatmu.</p>
+      <h3>Bandingkan ulasan</h3><p>Perhatikan ulasan terbaru dan foto dari pembeli. Jika ada informasi yang tidak jelas, tanyakan kepada penjual sebelum checkout.</p>`,
+      link:"https://shopee.co.id/",
+      product:"Temukan aksesori yang kompatibel dengan perangkatmu."
+    },
+    belanja: {
+      tag:"Tips Belanja",
+      title:"Tips memilih produk online agar tidak salah beli",
+      lead:"Sedikit waktu untuk memeriksa informasi produk bisa membantumu mengambil keputusan yang lebih tepat.",
+      body:`<p>Pertama, baca deskripsi lengkap dan pastikan variasi yang dipilih benar. Foto utama terkadang menampilkan beberapa pilihan, sedangkan harga dapat berbeda berdasarkan variasi.</p>
+      <h3>Periksa toko dan ulasan</h3><p>Lihat reputasi toko, ulasan terbaru, foto pembeli, serta kebijakan pengembalian yang berlaku.</p>
+      <h3>Bandingkan harga total</h3><p>Perhatikan ongkos kirim, voucher, dan ketentuan promo. Hindari terburu-buru hanya karena tulisan diskon atau hitung mundur.</p>`,
+      link:"https://shopee.co.id/",
+      product:"Lihat produk dan bandingkan informasi dari toko."
+    }
+  };
+  let currentArticle = "rumah";
+  function showArticle(key){
+    const a=articles[key]; if(!a)return; currentArticle=key;
+    document.getElementById("home").style.display="none";
+    const v=document.getElementById("articleView");v.classList.add("active");
+    document.getElementById("articleTag").textContent=a.tag;
+    document.getElementById("articleTitle").textContent=a.title;
+    document.getElementById("articleLead").textContent=a.lead;
+    document.getElementById("articleBody").innerHTML=a.body;
+    document.getElementById("affiliateButton").href=a.link;
+    document.getElementById("productText").textContent=a.product;
+    window.scrollTo({top:0,behavior:"smooth"});
+    history.replaceState(null,"","#"+key);
+  }
+  function showHome(){
+    document.getElementById("home").style.display="block";
+    document.getElementById("articleView").classList.remove("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+    history.replaceState(null,"",location.pathname);
+  }
+  function shareArticle(){
+    const url=location.href;
+    const text=articles[currentArticle].title;
+    window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url)+"&quote="+encodeURIComponent(text),"_blank","noopener");
+  }
+  document.getElementById("today").textContent=new Date().toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
